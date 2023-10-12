@@ -30,7 +30,7 @@ poetry run python cae/cli.py download_data --ticker-file "sp500updated_feb_2023.
 This will trivially download data from yahoo finance using [yfinance](https://github.com/ranaroussi/yfinance) (thanks!).
 
 The ticker file must be a csv with a "Symbol" column that matches the yahoo finance ticker.
-#### Create Dataset from Histroical Data
+#### Create Dataset from Historical Data
 ```
 poetry run python cae/cli.py create_dataset --source="dry_run" --dataset-name="testset_gzip" --image-type=D5
 ```
