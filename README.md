@@ -1,6 +1,6 @@
 # price-trends
 
-Originally based on the humorous "(Re-)Imag(in)ing Price Trends", which converts stock data into a graph and then trains a convolutional neural net to look at it and make future price predictions. This project reimplements the paper in pytorch and aims to extend it to end-to-end deep learning contexts.
+Originally based on the humorous "(Re-)Imag(in)ing Price Trends", which converts stock data into a graph and then trains a convolutional neural net to look at it and compute a probability of the price going up over some time horizon. This project reimplements the paper in pytorch and aims to extend it to end-to-end deep learning contexts.
 
 
 <img display="block" src="https://github.com/TedTimbrell/price-trends/assets/15372545/327db33c-670b-4877-a3d5-9c783e413640" width="300px" maxWidth="100%">
@@ -8,7 +8,7 @@ Originally based on the humorous "(Re-)Imag(in)ing Price Trends", which converts
 
 >Jiang, Jingwen and Kelly, Bryan T. and Xiu, Dacheng, (Re-)Imag(in)ing Price Trends (December 1, 2020). Chicago Booth Research Paper No. 21-01, Available at SSRN: https://ssrn.com/abstract=3756587 or http://dx.doi.org/10.2139/ssrn.3756587
 
-This includes:
+## What this repo contains
 * Downloading historical data from yahoo finance
 * Generating images and storing in them in compressed hdf5 files (along with candle data useful for post-hoc labelling)
 * Simple prebuilt Pytorch dataset class/pattern that can interface with with the hdf5 files
@@ -44,3 +44,9 @@ The files themselves need to be csv files and require the following named header
 
 Adjusted close is used to normalize each row's candle data so that the close matches the adjusted close. 
 
+## Avenues of Extension
+Probabilities are needed for stock trading but the original paper isn't an end-to-end model and only finds trading success by implenenting a strategy on top of the predicted probabilities (selecting the bottom and top 10% of confidences).
+
+Regression via a bayesian neural net seems like a natural next step in order to get both the actual predicted return (what we're really trying to optimize!) while still learning/returning some level of confidence interval. 
+
+The other is to learning an embedding for range of trading data via an auto-encoder. This A) is fun and B) if it works will create an embedding that can be used quickly in other models, time horizons, and contexts. 
