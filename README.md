@@ -14,6 +14,11 @@ Originally based on the humorous "(Re-)Imag(in)ing Price Trends", which converts
 * Simple prebuilt Pytorch dataset class/pattern that can interface with with the hdf5 files
 * The original price prediction model and an in-progress auto-encoder.
 
+## Divergence from (Re-)Imag(in)ing Price Trends
+It's worth nothing that our image generation isn't quite the same as the original paper. The original paper segments a single channel image, leaving the top for the price candle and the bottom for a smaller graph of the volume.
+
+The generation method in this module splits the price candles, the moving average, and the volume each into their own channel of the image. The intuition behind this is that I as a human struggled to find the moving average in a large number of cases where it overlapped the high and low for a candle on a certain day. Making volume its own channel is a little more dubious but it will be investigated later.
+
 ## How to Use 
 ### Installation
 Built wheel and pypi install aren't available yet.
